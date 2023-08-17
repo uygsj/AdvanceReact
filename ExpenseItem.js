@@ -1,4 +1,5 @@
-import './ExpensesItem.css'
+import React, { useState } from 'react';
+import './ExpensesItem.css';
 import ExpenseDate from './ExpenseDate';
 
 const ExpenseDetails = (props) => {
@@ -12,6 +13,17 @@ const ExpenseDetails = (props) => {
 }
 
 const ExpenseItem = (props) => {
+    const [title, setTitle] = useState(props.title);
+    const [amount, setAmount] = useState(props.amount);
+
+    const clickHandler = () => {
+        setTitle('updated');
+    }
+
+    const changeExpenseHandler = () => {
+        setAmount(100);
+    }
+
     const deleteExpenseHandler = () => {
         const expenseItem = document.querySelector('.expense-item');
         expenseItem.remove();
@@ -21,12 +33,12 @@ const ExpenseItem = (props) => {
         <div className='expense-item'>
             <ExpenseDate date={props.date} />
             <h2>Expense Details</h2>
-            <ExpenseDetails amount={props.amount} location={props.location} title={props.title} />
+            <ExpenseDetails amount={amount} location={props.location} title={title} />
             <button onClick={deleteExpenseHandler}>Delete Expense</button>
+            <button onClick={clickHandler}>Change Title</button>
+            <button onClick={changeExpenseHandler}>Change Expense</button>
         </div>
     );
 }
 
 export default ExpenseItem;
-
-
