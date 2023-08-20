@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ExpenseItem from './components/Expenses/ExpenseItem';
 import NewExpense from './components/NewExpense/NewExpense';
 
+
 const App = () => {
     const initialExpenses = [
         {
